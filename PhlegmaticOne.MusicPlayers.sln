@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhlegmaticOne.MusicPlayers", "PhlegmaticOne.MusicPlayers\PhlegmaticOne.MusicPlayers.csproj", "{6046B6CC-4E2C-4739-A179-99DE5C8A7440}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6046B6CC-4E2C-4739-A179-99DE5C8A7440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6046B6CC-4E2C-4739-A179-99DE5C8A7440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6046B6CC-4E2C-4739-A179-99DE5C8A7440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6046B6CC-4E2C-4739-A179-99DE5C8A7440}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {759457BC-724A-4DE8-858F-AF2012F02FA6}
+	EndGlobalSection
+EndGlobal
