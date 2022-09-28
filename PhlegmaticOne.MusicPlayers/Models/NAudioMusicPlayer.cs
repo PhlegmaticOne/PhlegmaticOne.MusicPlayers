@@ -2,9 +2,8 @@
 using PhlegmaticOne.MusicPlayers;
 using PhlegmaticOne.MusicPlayers.Base;
 using PhlegmaticOne.MusicPlayers.Exceptions;
-using PhlegmaticOne.Players.Base;
 
-namespace PhlegmaticOne.Players.Models;
+namespace PhlegmaticOne.MusicPlayers.Models;
 
 public class NAudioMusicPlayer : IPlayer
 {
@@ -102,9 +101,9 @@ public class NAudioMusicPlayer : IPlayer
 
     public void Rewind(TimeSpan timeStamp)
     {
-        if(timeStamp <= TimeSpan.Zero || timeStamp > _mediaFoundationReader.TotalTime)
+        if (timeStamp <= TimeSpan.Zero || timeStamp > _mediaFoundationReader.TotalTime)
         {
-            throw new RewindException(timeStamp, _mediaFoundationReader.TotalTime, 
+            throw new RewindException(timeStamp, _mediaFoundationReader.TotalTime,
                 "Requested time to rewind to is less than 0 or greater than total track length");
         }
 

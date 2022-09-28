@@ -1,6 +1,4 @@
-﻿using PhlegmaticOne.MusicPlayers.Base;
-
-namespace PhlegmaticOne.Players.Base;
+﻿namespace PhlegmaticOne.MusicPlayers.Base;
 
 /// <summary>
 /// Contracts for music players
