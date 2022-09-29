@@ -1,5 +1,4 @@
 ﻿using NAudio.Wave;
-using PhlegmaticOne.MusicPlayers;
 using PhlegmaticOne.MusicPlayers.Base;
 using PhlegmaticOne.MusicPlayers.Exceptions;
 
@@ -21,11 +20,8 @@ public class NAudioMusicPlayer : IPlayer
         UpdatePlayerTimelineTime = GlobalPlayerSettings.UpdatePlayerTimelineDefaultTime;
     }
 
-    public NAudioMusicPlayer(TimeSpan updatePlayerTimelineTime) : this() => UpdatePlayerTimelineTime = updatePlayerTimelineTime;
-
-
     public event EventHandler<TimeSpan>? TimeChanged;
-    public event EventHandler? SongEnded;
+    public event EventHandler<string>? SongEnded;
     public event EventHandler<PlayerState>? PlayerStateChanged;
     public event EventHandler<float>? VolumeChanged;
 
@@ -34,7 +30,7 @@ public class NAudioMusicPlayer : IPlayer
         get => _wasapiOut?.Volume ?? _volume;
         set
         {
-            if (value <= 1)
+            if (value <= 1 && value >= 0)
             {
                 _volume = value;
             }
@@ -49,6 +45,7 @@ public class NAudioMusicPlayer : IPlayer
     public TimeSpan UpdatePlayerTimelineTime { get; set; }
     public PlayerState PlayerState { get; private set; }
     public TimeSpan CurrentTime { get; private set; }
+    public string PlayingFileName { get; private set; }
 
     /// <summary>
     /// Plays music file from URL-link or Local file path
@@ -67,7 +64,7 @@ public class NAudioMusicPlayer : IPlayer
         {
             if (_isUserStopped == false)
             {
-                InvokeSongEnded();
+                InvokeSongEnded(fileName);
             }
 
             _isUserStopped = false;
@@ -113,6 +110,10 @@ public class NAudioMusicPlayer : IPlayer
     }
 
     public void Dispose() => TryDispose();
+    public override string ToString() => 
+        _mediaFoundationReader is not null
+            ? $"[{PlayerState}]: {PlayingFileName}: {CurrentTime:c}/{_mediaFoundationReader.TotalTime:c}"
+            : $"[{PlayerState}]: There is no track in player";
     private void PlaySong(string fileName)
     {
         TryDispose();
@@ -121,6 +122,7 @@ public class NAudioMusicPlayer : IPlayer
         _wasapiOut = new WasapiOut();
 
         _isDisposed = false;
+        PlayingFileName = fileName;
         Volume = _volume;
 
         SetState(PlayerState.Playing);
@@ -156,7 +158,7 @@ public class NAudioMusicPlayer : IPlayer
 
     private void InvokeTimeChanged() => TimeChanged?.Invoke(this, CurrentTime);
     private void InvokeStateChanged() => PlayerStateChanged?.Invoke(this, PlayerState);
-    private void InvokeSongEnded() => SongEnded?.Invoke(this, EventArgs.Empty);
+    private void InvokeSongEnded(string fileName) => SongEnded?.Invoke(this, fileName);
     private void InvokeVolumeChanged() => VolumeChanged?.Invoke(this, _volume);
     private void TryDispose()
     {

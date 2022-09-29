@@ -20,7 +20,7 @@ public interface IPlayer : IDisposable
     /// <summary>
     /// Invoked when song in player ended
     /// </summary>
-    public event EventHandler? SongEnded;
+    public event EventHandler<string>? SongEnded;
     /// <summary>
     /// Player volume
     /// </summary>
@@ -37,6 +37,10 @@ public interface IPlayer : IDisposable
     /// Current time in player
     /// </summary>
     public TimeSpan CurrentTime { get; }
+    /// <summary>
+    /// Playing file name
+    /// </summary>
+    public string PlayingFileName { get; }
     /// <summary>
     /// Plays music file
     /// </summary>

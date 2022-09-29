@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Title>MusicPlayer</Title>
     <Authors>Phlegmatic</Authors>
     <Description>Music player implementation</Description>
@@ -15,17 +15,18 @@
     <PackageTags>Music;Player;MusicPlayer;Songs;Tracks;Song;Track;</PackageTags>
     <PackageReleaseNotes>Added music player implementation</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\..\Downloads\Logo - Copy.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+    <PackageReference Include="NAudio.Wasapi" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NAudio.Wasapi" Version="2.1.0" />
+    <None Update="Logo - Copy.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
