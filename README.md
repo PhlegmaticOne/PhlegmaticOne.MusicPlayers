@@ -11,5 +11,16 @@
 ```
 PM> NuGet\Install-Package PhlegmaticOne.MusicPlayers -Version 1.0.2
 ```
+
 ## Usage
+
+### Basic Usage
+```csharp
+GlobalPlayerSettings.StartVolume = 0.1f;
+GlobalPlayerSettings.UpdatePlayerTimelineDefaultTime = TimeSpan.FromMilliseconds(500);
+var player = new NAudioMusicPlayer();
+player.Play("MyMusicFile.mp3");
+```
+
+### More advanced usage
 See sample :)
